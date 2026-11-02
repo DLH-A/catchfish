@@ -13,8 +13,14 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="doc">
+      <UniqueIdentifier>{B0836D7F-E145-4DA1-84F3-709A962BA01D}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
+    <None Include="doc\README.md">
+      <Filter>doc</Filter>
+    </None>
     <ClCompile Include="src\**\*.cpp;src\**\*.c;third_party\**\*.cpp;third_party\**\*.c">
       <Filter>源文件</Filter>
     </ClCompile>
