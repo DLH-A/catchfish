@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="TeamRaylibPaths">
+    <RaylibDir Condition="'$(RaylibDir)' == '' and '$(USERNAME)' == '29645'">C:\raylib</RaylibDir>
+
+    <!-- 团队成员配置示例，替换内容后去掉这一对 XML 注释：
+    <RaylibDir Condition="'$(RaylibDir)' == '' and '$(USERNAME)' == '成员的Windows用户名'">D:\Libraries\raylib</RaylibDir>
+    -->
+
+    <!-- 未匹配到成员配置时的默认路径，也可直接修改此处。 -->
+    <RaylibDir Condition="'$(RaylibDir)' == ''">C:\raylib</RaylibDir>
+  </PropertyGroup>
+
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(RaylibDir)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>$(RaylibDir)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>raylib.lib;winmm.lib;gdi32.lib;opengl32.lib;user32.lib;shell32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+
+  <Target Name="ValidateRaylib" BeforeTargets="PrepareForBuild">
+    <Error Condition="'$(Platform)' != 'x64'" Text="raylib is configured for MSVC x64. Select the x64 solution platform." />
+    <Error Condition="!Exists('$(RaylibDir)\include\raylib.h')" Text="raylib.h was not found under $(RaylibDir). Set your installation path in raylib.props." />
+    <Error Condition="!Exists('$(RaylibDir)\lib\raylib.lib')" Text="raylib.lib was not found under $(RaylibDir). Set your installation path in raylib.props." />
+  </Target>
+</Project>
