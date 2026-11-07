@@ -21,6 +21,9 @@
     <None Include="doc\README.md">
       <Filter>doc</Filter>
     </None>
+    <None Include="doc\phase-1-requirements.md">
+      <Filter>doc</Filter>
+    </None>
     <ClCompile Include="src\**\*.cpp;src\**\*.c;third_party\**\*.cpp;third_party\**\*.c">
       <Filter>源文件</Filter>
     </ClCompile>

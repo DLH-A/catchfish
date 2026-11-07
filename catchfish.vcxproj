@@ -145,6 +145,7 @@
   <ItemGroup>
     <None Include="raylib.props" />
     <None Include="doc\README.md" />
+    <None Include="doc\phase-1-requirements.md" />
     <ClCompile Include="src\**\*.cpp;src\**\*.c;third_party\**\*.cpp;third_party\**\*.c" />
     <ClInclude Include="src\**\*.h;src\**\*.hpp;third_party\**\*.h;third_party\**\*.hpp" />
   </ItemGroup>
