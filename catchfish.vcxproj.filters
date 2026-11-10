@@ -127,7 +127,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\..\..\Desktop\buyu\bottom.png">
+    <Image Include="..\..\..\Desktop\buyu\turret_base.png">
       <Filter>assets\images</Filter>
     </Image>
     <Image Include="..\..\..\Desktop\buyu\bullet.png">
@@ -163,34 +163,16 @@
     <Image Include="..\..\..\Desktop\buyu\coinText.png">
       <Filter>assets\images</Filter>
     </Image>
-    <Image Include="..\..\..\Desktop\buyu\fish1.png">
+    <Image Include="..\..\..\Desktop\buyu\fish_fast.png">
       <Filter>assets\images</Filter>
     </Image>
-    <Image Include="..\..\..\Desktop\buyu\fish2.png">
+    <Image Include="..\..\..\Desktop\buyu\fish_small.png">
       <Filter>assets\images</Filter>
     </Image>
-    <Image Include="..\..\..\Desktop\buyu\fish3.png">
+    <Image Include="..\..\..\Desktop\buyu\fish_medium.png">
       <Filter>assets\images</Filter>
     </Image>
-    <Image Include="..\..\..\Desktop\buyu\fish4.png">
-      <Filter>assets\images</Filter>
-    </Image>
-    <Image Include="..\..\..\Desktop\buyu\fish5.png">
-      <Filter>assets\images</Filter>
-    </Image>
-    <Image Include="..\..\..\Desktop\buyu\fish6.png">
-      <Filter>assets\images</Filter>
-    </Image>
-    <Image Include="..\..\..\Desktop\buyu\fish7.png">
-      <Filter>assets\images</Filter>
-    </Image>
-    <Image Include="..\..\..\Desktop\buyu\fish8.png">
-      <Filter>assets\images</Filter>
-    </Image>
-    <Image Include="..\..\..\Desktop\buyu\fish9.png">
-      <Filter>assets\images</Filter>
-    </Image>
-    <Image Include="..\..\..\Desktop\buyu\fish10.png">
+    <Image Include="..\..\..\Desktop\buyu\fish_rare.png">
       <Filter>assets\images</Filter>
     </Image>
     <Image Include="..\..\..\Desktop\buyu\game_bg_2_hd.jpg">
@@ -199,10 +181,7 @@
     <Image Include="..\..\..\Desktop\buyu\number_black.png">
       <Filter>assets\images</Filter>
     </Image>
-    <Image Include="..\..\..\Desktop\buyu\shark1.png">
-      <Filter>assets\images</Filter>
-    </Image>
-    <Image Include="..\..\..\Desktop\buyu\shark2.png">
+    <Image Include="..\..\..\Desktop\buyu\fish_large.png">
       <Filter>assets\images</Filter>
     </Image>
     <Image Include="..\..\..\Desktop\buyu\web.png">

@@ -10,6 +10,7 @@
 #include "BulletComponent.h"
 
 
+
 int main() {
 	//初始化
 	InitWindow(800, 600, "捕鱼");
@@ -27,6 +28,7 @@ int main() {
 	game.eventBus = &eventBus;
 
 	// ========== 添加第一阶段玩法组件 ==========
+	world.addComponent(std::make_unique<MouseComponent>());
 	world.addComponent(std::make_unique<FishSpawnerComponent>());
 	world.addComponent(std::make_unique<TurretComponent>());
 	world.addComponent(std::make_unique<BulletComponent>());
