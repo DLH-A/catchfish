@@ -5,6 +5,9 @@
 #include "EventBus.h"
 #include "Component.h"
 #include "World.h"
+#include "FishSpawnerComponent.h"
+#include "TurretComponent.h"
+#include "BulletComponent.h"
 
 
 int main() {
@@ -22,6 +25,11 @@ int main() {
 	game.resourceManager = &resourceManager;
 	game.audioPlayer = &audioPlayer;
 	game.eventBus = &eventBus;
+
+	// ========== 添加第一阶段玩法组件 ==========
+	world.addComponent(std::make_unique<FishSpawnerComponent>());
+	world.addComponent(std::make_unique<TurretComponent>());
+	world.addComponent(std::make_unique<BulletComponent>());
 
 	//资源加载
 	resourceManager.Init("assets");

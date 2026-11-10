@@ -16,6 +16,15 @@
     <Filter Include="doc">
       <UniqueIdentifier>{B0836D7F-E145-4DA1-84F3-709A962BA01D}</UniqueIdentifier>
     </Filter>
+    <Filter Include="assets">
+      <UniqueIdentifier>{59adb4af-fc53-4ff3-9230-045dacb4f21b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="assets\images">
+      <UniqueIdentifier>{2702e2bb-4826-451d-998f-09f37825a6d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="gameplay">
+      <UniqueIdentifier>{1f2461a4-c27c-48ae-b938-2d70716b7a7d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="doc\README.md">
@@ -30,5 +39,174 @@
     <ClInclude Include="src\**\*.h;src\**\*.hpp;third_party\**\*.h;third_party\**\*.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
+    <None Include="raylib.props" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\**\*.cpp;src\**\*.c;third_party\**\*.cpp;third_party\**\*.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\**\*.cpp;src\**\*.c;third_party\**\*.cpp;third_party\**\*.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\**\*.cpp;src\**\*.c;third_party\**\*.cpp;third_party\**\*.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\**\*.cpp;src\**\*.c;third_party\**\*.cpp;third_party\**\*.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\**\*.cpp;src\**\*.c;third_party\**\*.cpp;third_party\**\*.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\**\*.cpp;src\**\*.c;third_party\**\*.cpp;third_party\**\*.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\**\*.cpp;src\**\*.c;third_party\**\*.cpp;third_party\**\*.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\**\*.cpp;src\**\*.c;third_party\**\*.cpp;third_party\**\*.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\**\*.cpp;src\**\*.c;third_party\**\*.cpp;third_party\**\*.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\**\*.cpp;src\**\*.c;third_party\**\*.cpp;third_party\**\*.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\**\*.h;src\**\*.hpp;third_party\**\*.h;third_party\**\*.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\**\*.h;src\**\*.hpp;third_party\**\*.h;third_party\**\*.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\**\*.h;src\**\*.hpp;third_party\**\*.h;third_party\**\*.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\**\*.h;src\**\*.hpp;third_party\**\*.h;third_party\**\*.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\**\*.h;src\**\*.hpp;third_party\**\*.h;third_party\**\*.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\**\*.h;src\**\*.hpp;third_party\**\*.h;third_party\**\*.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\**\*.h;src\**\*.hpp;third_party\**\*.h;third_party\**\*.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\**\*.h;src\**\*.hpp;third_party\**\*.h;third_party\**\*.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\**\*.h;src\**\*.hpp;third_party\**\*.h;third_party\**\*.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\**\*.h;src\**\*.hpp;third_party\**\*.h;third_party\**\*.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\**\*.h;src\**\*.hpp;third_party\**\*.h;third_party\**\*.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\**\*.h;src\**\*.hpp;third_party\**\*.h;third_party\**\*.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEvents.h">
+      <Filter>gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="FishBase.h">
+      <Filter>gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="FishSpawnerComponent.h">
+      <Filter>gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="TurretComponent.h">
+      <Filter>gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="BulletComponent.h">
+      <Filter>gameplay</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\..\Desktop\buyu\bottom.png">
+      <Filter>assets\images</Filter>
+    </Image>
+    <Image Include="..\..\..\Desktop\buyu\bullet.png">
+      <Filter>assets\images</Filter>
+    </Image>
+    <Image Include="..\..\..\Desktop\buyu\cannon1.png">
+      <Filter>assets\images</Filter>
+    </Image>
+    <Image Include="..\..\..\Desktop\buyu\cannon2.png">
+      <Filter>assets\images</Filter>
+    </Image>
+    <Image Include="..\..\..\Desktop\buyu\cannon3.png">
+      <Filter>assets\images</Filter>
+    </Image>
+    <Image Include="..\..\..\Desktop\buyu\cannon4.png">
+      <Filter>assets\images</Filter>
+    </Image>
+    <Image Include="..\..\..\Desktop\buyu\cannon5.png">
+      <Filter>assets\images</Filter>
+    </Image>
+    <Image Include="..\..\..\Desktop\buyu\cannon6.png">
+      <Filter>assets\images</Filter>
+    </Image>
+    <Image Include="..\..\..\Desktop\buyu\cannon7.png">
+      <Filter>assets\images</Filter>
+    </Image>
+    <Image Include="..\..\..\Desktop\buyu\coinAni1.png">
+      <Filter>assets\images</Filter>
+    </Image>
+    <Image Include="..\..\..\Desktop\buyu\coinAni2.png">
+      <Filter>assets\images</Filter>
+    </Image>
+    <Image Include="..\..\..\Desktop\buyu\coinText.png">
+      <Filter>assets\images</Filter>
+    </Image>
+    <Image Include="..\..\..\Desktop\buyu\fish1.png">
+      <Filter>assets\images</Filter>
+    </Image>
+    <Image Include="..\..\..\Desktop\buyu\fish2.png">
+      <Filter>assets\images</Filter>
+    </Image>
+    <Image Include="..\..\..\Desktop\buyu\fish3.png">
+      <Filter>assets\images</Filter>
+    </Image>
+    <Image Include="..\..\..\Desktop\buyu\fish4.png">
+      <Filter>assets\images</Filter>
+    </Image>
+    <Image Include="..\..\..\Desktop\buyu\fish5.png">
+      <Filter>assets\images</Filter>
+    </Image>
+    <Image Include="..\..\..\Desktop\buyu\fish6.png">
+      <Filter>assets\images</Filter>
+    </Image>
+    <Image Include="..\..\..\Desktop\buyu\fish7.png">
+      <Filter>assets\images</Filter>
+    </Image>
+    <Image Include="..\..\..\Desktop\buyu\fish8.png">
+      <Filter>assets\images</Filter>
+    </Image>
+    <Image Include="..\..\..\Desktop\buyu\fish9.png">
+      <Filter>assets\images</Filter>
+    </Image>
+    <Image Include="..\..\..\Desktop\buyu\fish10.png">
+      <Filter>assets\images</Filter>
+    </Image>
+    <Image Include="..\..\..\Desktop\buyu\game_bg_2_hd.jpg">
+      <Filter>assets\images</Filter>
+    </Image>
+    <Image Include="..\..\..\Desktop\buyu\number_black.png">
+      <Filter>assets\images</Filter>
+    </Image>
+    <Image Include="..\..\..\Desktop\buyu\shark1.png">
+      <Filter>assets\images</Filter>
+    </Image>
+    <Image Include="..\..\..\Desktop\buyu\shark2.png">
+      <Filter>assets\images</Filter>
+    </Image>
+    <Image Include="..\..\..\Desktop\buyu\web.png">
+      <Filter>assets\images</Filter>
+    </Image>
   </ItemGroup>
 </Project>

@@ -8,7 +8,7 @@
     -->
 
     <!-- 未匹配到成员配置时的默认路径，也可直接修改此处。 -->
-    <RaylibDir Condition="'$(RaylibDir)' == ''">C:\raylib</RaylibDir>
+    <RaylibDir Condition="'$(RaylibDir)' == ''">D:\raylib</RaylibDir>
   </PropertyGroup>
 
   <ItemDefinitionGroup>

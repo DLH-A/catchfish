@@ -17,7 +17,6 @@
       <Configuration>Release</Configuration>
       <Platform>x64</Platform>
     </ProjectConfiguration>
-
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <Platform Condition="'$(Platform)' == ''">x64</Platform>
@@ -54,25 +53,23 @@
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
-
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
-  <ImportGroup Label="Shared" >
+  <ImportGroup Label="Shared">
   </ImportGroup>
-    <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-      <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    </ImportGroup>
-    <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-      <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    </ImportGroup>
-    <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-      <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    </ImportGroup>
-    <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-      <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    </ImportGroup>
-
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
   <ImportGroup Label="PropertySheets">
     <Import Project="$(MSBuildProjectDirectory)\raylib.props" />
   </ImportGroup>
@@ -88,7 +85,6 @@
       <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
   </ItemDefinitionGroup>
-
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -98,7 +94,7 @@
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
-       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -112,7 +108,7 @@
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
-       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -124,7 +120,7 @@
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
-       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -138,16 +134,49 @@
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
-       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-
   <ItemGroup>
+    <ClInclude Include="BulletComponent.h" />
+    <ClInclude Include="FishBase.h" />
+    <ClInclude Include="FishSpawnerComponent.h" />
+    <ClInclude Include="GameEvents.h" />
+    <ClInclude Include="TurretComponent.h" />
     <None Include="raylib.props" />
     <None Include="doc\README.md" />
     <None Include="doc\phase-1-requirements.md" />
     <ClCompile Include="src\**\*.cpp;src\**\*.c;third_party\**\*.cpp;third_party\**\*.c" />
     <ClInclude Include="src\**\*.h;src\**\*.hpp;third_party\**\*.h;third_party\**\*.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\..\Desktop\buyu\bottom.png" />
+    <Image Include="..\..\..\Desktop\buyu\bullet.png" />
+    <Image Include="..\..\..\Desktop\buyu\cannon1.png" />
+    <Image Include="..\..\..\Desktop\buyu\cannon2.png" />
+    <Image Include="..\..\..\Desktop\buyu\cannon3.png" />
+    <Image Include="..\..\..\Desktop\buyu\cannon4.png" />
+    <Image Include="..\..\..\Desktop\buyu\cannon5.png" />
+    <Image Include="..\..\..\Desktop\buyu\cannon6.png" />
+    <Image Include="..\..\..\Desktop\buyu\cannon7.png" />
+    <Image Include="..\..\..\Desktop\buyu\coinAni1.png" />
+    <Image Include="..\..\..\Desktop\buyu\coinAni2.png" />
+    <Image Include="..\..\..\Desktop\buyu\coinText.png" />
+    <Image Include="..\..\..\Desktop\buyu\fish1.png" />
+    <Image Include="..\..\..\Desktop\buyu\fish10.png" />
+    <Image Include="..\..\..\Desktop\buyu\fish2.png" />
+    <Image Include="..\..\..\Desktop\buyu\fish3.png" />
+    <Image Include="..\..\..\Desktop\buyu\fish4.png" />
+    <Image Include="..\..\..\Desktop\buyu\fish5.png" />
+    <Image Include="..\..\..\Desktop\buyu\fish6.png" />
+    <Image Include="..\..\..\Desktop\buyu\fish7.png" />
+    <Image Include="..\..\..\Desktop\buyu\fish8.png" />
+    <Image Include="..\..\..\Desktop\buyu\fish9.png" />
+    <Image Include="..\..\..\Desktop\buyu\game_bg_2_hd.jpg" />
+    <Image Include="..\..\..\Desktop\buyu\number_black.png" />
+    <Image Include="..\..\..\Desktop\buyu\shark1.png" />
+    <Image Include="..\..\..\Desktop\buyu\shark2.png" />
+    <Image Include="..\..\..\Desktop\buyu\web.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

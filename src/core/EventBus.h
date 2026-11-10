@@ -31,6 +31,9 @@ enum EventType
 	
 	//音效播放
 	EVENT_PLAY_SOUND,
+
+	// 新增：炮塔发射事件
+	EVENT_TURRET_FIRE,
 };
 
 class EventBus
@@ -78,4 +81,15 @@ public:
 	GameState targetState;
 	explicit SceneChangeEvent(GameState s) : targetState(s) {}
 	EventType GetType() const override { return EventType::EVENT_SCENE_CHANGE; }
+};
+
+// 新增：炮塔发射事件的具体数据类
+class TurretFireEvent : public BaseEvent
+{
+public:
+	Vector2 spawnPos;      // 炮口位置
+	Vector2 direction;     // 发射方向（已归一化）
+
+	TurretFireEvent(Vector2 pos, Vector2 dir) : spawnPos(pos), direction(dir) {}
+	EventType GetType() const override { return EventType::EVENT_TURRET_FIRE; }
 };
