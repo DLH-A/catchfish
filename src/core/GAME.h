@@ -26,6 +26,8 @@ struct Game
 
     int currentLevel = 1;
     int sunNumber = 0;
+    // 【新增】在这里加上一行初始分数设定，比如初始给玩家 1000 分
+    int score = 1000;
     int plantCardNumber = 5;
     int unlockedPlantCardNumber = 5;
     int sceneID = 0;

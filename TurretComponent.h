@@ -8,6 +8,7 @@
 
 class TurretComponent : public Component {
 private:
+    int currentAmmoLevel = 1; // 【新增】当前炮弹等级，默认1级
     Vector2 basePos_;
     float currentAngle_;
     Vector2 aimDirection_;
@@ -19,6 +20,10 @@ private:
     bool cannonLoaded_ = false;
 
 public:
+    // 【新增】获取当前炮弹等级的函数
+    int GetAmmoLevel() const {
+        return currentAmmoLevel;
+    }
     TurretComponent() : currentAngle_(-PI / 2.0f) {
         aimDirection_ = { 0.0f, -1.0f };
         baseTexture_ = { 0 };
@@ -43,6 +48,12 @@ public:
 
     void update(float dt) override {
         if (!isActive) return;
+        // 按 U 键升级炮弹等级（最多3级）
+        if (IsKeyPressed(KEY_U)) {
+            if (currentAmmoLevel < 3) {
+                currentAmmoLevel++;
+            }
+        }
         Vector2 mousePos = GetMousePosition();
         Vector2 toMouse = { mousePos.x - basePos_.x, mousePos.y - basePos_.y };
 
@@ -117,12 +128,27 @@ private:
     }
 
     void FireBullet() {
-        float len = cannonLoaded_ ? (float)cannonTexture_.height : 50.0f; // 用高度作为长度
+        // 【新增】按等级计算消耗
+        int cost = 1;
+        if (currentAmmoLevel == 2) cost = 5;
+        else if (currentAmmoLevel == 3) cost = 10;
+
+        // 分数不够，禁止发射
+        if (game->score < cost) return;
+        // 【关键修改：先扣分，确保分数真的减少】
+        game->score -= cost;
+        // 【新增】打开控制台，看看这里有没有打印，以及分数变了没
+        TraceLog(LOG_INFO, "发射子弹，扣除 %d 分，当前分数: %d", cost, game->score);
+
+        float len = cannonLoaded_ ? (float)cannonTexture_.height : 50.0f;
         Vector2 muzzlePos = {
             basePos_.x + aimDirection_.x * len,
             basePos_.y + aimDirection_.y * len
         };
+
         TurretFireEvent fireEvent(muzzlePos, aimDirection_);
+
+        // 【关键修改：最后再发射子弹】
         game->eventBus->Publish(fireEvent, this);
     }
 };

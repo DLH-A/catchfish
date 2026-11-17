@@ -13,6 +13,7 @@ struct BulletData {
     float speed;
     float radius;
     bool isActive;
+    int ammoLevel = 1; // 【新增】子弹的等级，默认1级
 
     BulletData() : speed(800.0f), radius(10.0f), isActive(true) {
         position = { 0, 0 };
@@ -55,6 +56,11 @@ public:
                     BulletData newBullet;
                     newBullet.position = fireEvent->spawnPos;
                     newBullet.direction = fireEvent->direction;
+                    // 【新增】获取发射者的等级并赋值给子弹
+                    TurretComponent* turret = dynamic_cast<TurretComponent*>(sender);
+                    if (turret) {
+                        newBullet.ammoLevel = turret->GetAmmoLevel();
+                    }
                     bullets_.push_back(newBullet);
                 }
             }
@@ -88,11 +94,12 @@ public:
                     // 检测子弹是否撞到鱼的碰撞箱
                     if (CheckCollisionPointRec(bullet.position, fish->hitbox_)) {
 
-                        bullet.isActive = false;  // 销毁子弹
-                        fish->hp_ -= 1;           // 鱼扣 1 点血
+                        bullet.isActive = false;           // 销毁子弹
+                        fish->hp_ -= bullet.ammoLevel;     // 按子弹等级扣血
 
-                        if (fish->hp_ <= 0) {
-                            fish->isActive = false; // 鱼血量归零，标记为死亡
+                        if (fish->hp_ <= 0 && fish->isActive) {
+                            fish->isActive = false;        // 鱼死亡
+                            game->score += fish->score;    // 加分
                         }
 
                         break; // 一颗子弹只撞一条鱼，跳出内层循环

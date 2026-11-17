@@ -34,7 +34,10 @@ public:
         for (auto& c : components_)
         {
             if (c) c->draw();
+
         }
+        // 2. 【在这里加上这一行】在画面最上方绘制分数
+        DrawText(TextFormat("Score: %d", game.score), 20, 20, 40, BLACK);
 	}
     void destroy()
     {

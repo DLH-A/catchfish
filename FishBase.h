@@ -23,6 +23,7 @@ public:
     int hp_ = 1;                                 // 👈 新加的三行
     bool isDead_ = false;                        // 👈 
     Rectangle hitbox_ = { 0, 0, 60.0f, 40.0f };  // 👈
+    int score = 10; // 【新增】这条鱼被消灭后获得的分数
     // 【新增】手动初始化方法
     void ManualInit(Game* g) {
         game = g;       // 设置游戏环境指针

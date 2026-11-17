@@ -127,12 +127,27 @@ private:
         // 2. 强制初始化
         newFish->ForceInit(this->game);
 
-        // 3. 设置血量
-        if (selectedConfig.name == "SmallFish") newFish->hp_ = 1;
-        else if (selectedConfig.name == "FastFish") newFish->hp_ = 1;
-        else if (selectedConfig.name == "MediumFish") newFish->hp_ = 3;
-        else if (selectedConfig.name == "LargeFish") newFish->hp_ = 5;
-        else if (selectedConfig.name == "RareFish") newFish->hp_ = 10;
+        // 3. 设置血量和分数
+        if (selectedConfig.name == "SmallFish") {
+            newFish->hp_ = 1;
+            newFish->score = 10;
+        }
+        else if (selectedConfig.name == "FastFish") {
+            newFish->hp_ = 1;
+            newFish->score = 15;
+        }
+        else if (selectedConfig.name == "MediumFish") {
+            newFish->hp_ = 3;
+            newFish->score = 30;
+        }
+        else if (selectedConfig.name == "LargeFish") {
+            newFish->hp_ = 5;
+            newFish->score = 50;
+        }
+        else if (selectedConfig.name == "RareFish") {
+            newFish->hp_ = 10;
+            newFish->score = 100;
+        }
 
         newFish->isActive = true;
         fishes_.push_back(std::move(newFish));
