@@ -2,6 +2,7 @@
 #include "../core/Component.h"
 #include "../core/EventBus.h"
 #include "ResourceManager.h"
+#include "FishSpawnerComponent.h"
 #include <vector>
 #include <raylib.h>
 #include <string>
@@ -76,6 +77,27 @@ public:
             if (bullet.position.x < -50 || bullet.position.x > screenWidth + 50 ||
                 bullet.position.y < -50 || bullet.position.y > screenHeight + 50) {
                 bullet.isActive = false;
+            }
+        }
+
+        if (FishSpawnerComponent::Instance) {
+            for (auto& bullet : bullets_) {
+                if (!bullet.isActive) continue;
+
+                for (auto& fish : FishSpawnerComponent::Instance->fishes_) {
+                    // 检测子弹是否撞到鱼的碰撞箱
+                    if (CheckCollisionPointRec(bullet.position, fish->hitbox_)) {
+
+                        bullet.isActive = false;  // 销毁子弹
+                        fish->hp_ -= 1;           // 鱼扣 1 点血
+
+                        if (fish->hp_ <= 0) {
+                            fish->isActive = false; // 鱼血量归零，标记为死亡
+                        }
+
+                        break; // 一颗子弹只撞一条鱼，跳出内层循环
+                    }
+                }
             }
         }
 

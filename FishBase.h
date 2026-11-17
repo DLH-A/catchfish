@@ -13,12 +13,15 @@ protected:
     Color color_;
     bool hasEnteredScreen_;
 
+
     // 贴图相关
     Texture2D texture_;
     std::string texturePath_;
     bool textureLoaded_ = false;
 
 public:
+    int hp_ = 1;                                 // 👈 新加的两行
+    Rectangle hitbox_ = { 0, 0, 60.0f, 40.0f };  // 👈
     // 【新增】手动初始化方法
     void ManualInit(Game* g) {
         game = g;       // 设置游戏环境指针
@@ -77,6 +80,7 @@ public:
         radius_ = radius;
         color_ = color;
         hasEnteredScreen_ = false;
+        hp_ = 1;
     }
 
     void Init() override {
@@ -109,6 +113,12 @@ public:
 
         position_.x += direction_.x * speed_ * dt;
         position_.y += direction_.y * speed_ * dt;
+
+        // 假设碰撞箱大小是 60x40（你可以根据鱼的图片大小调整）
+        hitbox_.x = position_.x - 30.0f;
+        hitbox_.y = position_.y - 20.0f;
+        hitbox_.width = 60.0f;
+        hitbox_.height = 40.0f;
 
         if (!hasEnteredScreen_) {
             float screenWidth = GetScreenWidth();
