@@ -8,6 +8,7 @@
 #include "FishSpawnerComponent.h"
 #include "TurretComponent.h"
 #include "BulletComponent.h"
+#include "BackgroundComponent.h" 
 
 
 
@@ -28,6 +29,7 @@ int main() {
 	game.eventBus = &eventBus;
 
 	// ========== 添加第一阶段玩法组件 ==========
+	world.addComponent(std::make_unique<BackgroundComponent>());
 	world.addComponent(std::make_unique<MouseComponent>());
 	world.addComponent(std::make_unique<FishSpawnerComponent>());
 	world.addComponent(std::make_unique<TurretComponent>());
@@ -46,7 +48,7 @@ int main() {
 
 		//绘制逻辑
 		BeginDrawing();
-		ClearBackground(RAYWHITE);
+		//ClearBackground(RAYWHITE);
 		world.draw();
 		EndDrawing();
 	}

@@ -13,6 +13,12 @@ struct FishConfig {
     float weight;
     const char* name;
     std::string texturePath;  // 新增：贴图路径
+
+    // 新增：动画参数（带默认值，单帧鱼不需要填）
+    int frameCount = 1;
+    float frameWidth = 0;
+    float frameHeight = 0;
+    float frameDuration = 0.1f;
 };
 
 class FishSpawnerComponent : public Component {
@@ -34,12 +40,29 @@ public:
     }
 
     void Init() override {
-        // 配置5种鱼（路径必须和文件夹里完全一致）
-        fishTypes_.push_back({ 15.0f, 150.0f, SKYBLUE, 30.0f, "SmallFish", "assets/images/fish_small.png" });
-        fishTypes_.push_back({ 12.0f, 250.0f, YELLOW, 20.0f, "FastFish",  "assets/images/fish_fast.png" });
-        fishTypes_.push_back({ 25.0f, 100.0f, GREEN, 30.0f, "MediumFish", "assets/images/fish_medium.png" });
-        fishTypes_.push_back({ 40.0f, 60.0f, RED, 15.0f, "LargeFish",    "assets/images/fish_large.png" });
-        fishTypes_.push_back({ 35.0f, 120.0f, PURPLE, 5.0f, "RareFish",  "assets/images/fish_rare.png" });
+        Instance = this;
+
+        // 格式：{半径, 速度, 颜色, 权重, 名字, 图片路径, 帧数, 每帧宽, 每帧高, 每帧持续时间}
+
+        // 1. SmallFish（黄色小鱼）：78×512，8帧 → 每帧 78×64
+        fishTypes_.push_back({ 15.0f, 150.0f, SKYBLUE, 30.0f, "SmallFish",
+            "assets/images/fish_small.png", 8, 78.0f, 64.0f, 0.1f });
+
+        // 2. FastFish（橙白小丑鱼）：55×296，8帧 → 每帧 55×37
+        fishTypes_.push_back({ 20.0f, 250.0f, YELLOW, 20.0f, "FastFish",
+            "assets/images/fish_fast.png", 8, 55.0f, 37.0f, 0.1f });
+
+        // 3. MediumFish（蓝黄热带鱼）：77×472，8帧 → 每帧 77×59
+        fishTypes_.push_back({ 25.0f, 100.0f, GREEN, 30.0f, "MediumFish",
+            "assets/images/fish_medium.png", 8, 77.0f, 59.0f, 0.1f });
+
+        // 4. LargeFish（蓝色锤头鲨）：509×3240，12帧 → 每帧 509×270
+        fishTypes_.push_back({ 60.0f, 60.0f, RED, 15.0f, "LargeFish",
+            "assets/images/fish_large.png", 12, 509.0f, 270.0f, 0.1f });
+
+        // 5. RareFish（红色海龟）：178×1870，11帧 → 每帧 178×170
+        fishTypes_.push_back({ 40.0f, 120.0f, PURPLE, 5.0f, "RareFish",
+            "assets/images/fish_rare.png", 11, 178.0f, 187.0f, 0.1f });
     }
 
     void update(float dt) override {
@@ -121,8 +144,11 @@ private:
         auto newFish = std::make_unique<FishBase>();
 
         // 1. 设置参数
+               // 传入所有参数，包括新增的动画参数
         newFish->SetupWithTexture(startPos, targetPos, selectedConfig.speed,
-            selectedConfig.radius, selectedConfig.color, selectedConfig.texturePath);
+            selectedConfig.radius, selectedConfig.color, selectedConfig.texturePath,
+            selectedConfig.frameCount, selectedConfig.frameWidth,
+            selectedConfig.frameHeight, selectedConfig.frameDuration);
 
         // 2. 强制初始化
         newFish->ForceInit(this->game);

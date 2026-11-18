@@ -19,6 +19,15 @@ protected:
     std::string texturePath_;
     bool textureLoaded_ = false;
 
+    // ===== 新增：动画相关变量 =====
+    int   frameCount_ = 1;      // 总帧数（1=单帧，>1=动画）
+    float frameWidth_ = 0;      // 每帧宽度
+    float frameHeight_ = 0;      // 每帧高度
+    int   currentFrame_ = 0;      // 当前播放的帧索引
+    float frameTimer_ = 0.0f;   // 帧计时器
+    float frameDuration_ = 0.1f;   // 每帧持续时间（秒）
+    bool  isAnimated_ = false;  // 是否是动画
+
 public:
     int hp_ = 1;                                 // 👈 新加的三行
     bool isDead_ = false;                        // 👈 
@@ -43,6 +52,11 @@ public:
                 if (radius_ < 10.0f) {
                     radius_ = (float)texture_.width / 2.0f;
                 }
+                // 新增：如果是动画且没指定宽高，自动按垂直排列计算
+                if (isAnimated_ && frameWidth_ == 0) {
+                    frameWidth_ = (float)texture_.width;
+                    frameHeight_ = (float)texture_.height / frameCount_;
+                }
             }
             else {
                 // 加载失败，打印错误方便调试
@@ -60,9 +74,15 @@ public:
 
     // 使用贴图初始化
        // 正确的写法：
-    void SetupWithTexture(Vector2 startPos, Vector2 targetPos, float speed, float radius, Color color, const std::string& texturePath) {
-        Setup(startPos, targetPos, speed, radius, color);  // 传入颜色
+    void SetupWithTexture(Vector2 startPos, Vector2 targetPos, float speed, float radius, Color color, const std::string& texturePath,
+        int frameCount = 1, float frameWidth = 0, float frameHeight = 0, float frameDuration = 0.1f) {
+        Setup(startPos, targetPos, speed, radius, color);
         texturePath_ = texturePath;
+        frameCount_ = frameCount;
+        frameWidth_ = frameWidth;
+        frameHeight_ = frameHeight;
+        frameDuration_ = frameDuration;
+        isAnimated_ = (frameCount > 1); // 帧数大于1才算动画
     }
 
     // 原有的 Setup 方法（保留用于纯色模式）
@@ -116,6 +136,15 @@ public:
         position_.x += direction_.x * speed_ * dt;
         position_.y += direction_.y * speed_ * dt;
 
+        // 新增：动画帧更新
+        if (isAnimated_ && textureLoaded_) {
+            frameTimer_ += dt;
+            if (frameTimer_ >= frameDuration_) {
+                frameTimer_ = 0.0f;
+                currentFrame_ = (currentFrame_ + 1) % frameCount_; // 循环播放
+            }
+        }
+
         // 假设碰撞箱大小是 60x40（你可以根据鱼的图片大小调整）
         hitbox_.x = position_.x - 30.0f;
         hitbox_.y = position_.y - 20.0f;
@@ -144,19 +173,27 @@ public:
 
             // 绘制旋转的贴图
             // 注意：DrawTexturePro 需要调整源矩形和目标矩形
-            Rectangle source = { 0, 0, (float)texture_.width, (float)texture_.height };
-            Rectangle dest = {
-                position_.x - radius_,
-                position_.y - radius_,
-                radius_ * 3.0f,
-                radius_ * 3.0f
-            };
-            Vector2 origin = { radius_, radius_ };
+                       // 新增：根据是否动画，决定裁剪哪一帧
+            Rectangle source;
+            float fw, fh; // 当前帧的实际宽高
+            if (isAnimated_) {
+                fw = frameWidth_;
+                fh = frameHeight_;
+                source = { 0, (float)currentFrame_ * fh, fw, fh }; // 垂直裁剪当前帧
+            }
+            else {
+                fw = (float)texture_.width;
+                fh = (float)texture_.height;
+                source = { 0, 0, fw, fh };
+            }
 
-          
+            // 按原图宽高比计算显示尺寸，防止鱼被拉伸变形
+            float dispW = radius_ * 3.0f; // 你原来的放大倍数
+            float dispH = dispW * (fh / fw);
+            Rectangle dest = { position_.x - dispW / 2.0f, position_.y - dispH / 2.0f, dispW, dispH };
+            Vector2 origin = { dispW / 2.0f, dispH / 2.0f }; // 绕中心旋转
 
             DrawTexturePro(texture_, source, dest, origin, angle, WHITE);
-   
         }
         else {
             // 降级方案：绘制圆形
