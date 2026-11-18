@@ -50,6 +50,5 @@ int main() {
 		world.draw();
 		EndDrawing();
 	}
-	world.destroy();
 	CloseWindow();
 }

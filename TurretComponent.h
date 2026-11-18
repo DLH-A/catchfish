@@ -142,7 +142,7 @@ private:
 
         float len = cannonLoaded_ ? (float)cannonTexture_.height : 50.0f;
         Vector2 muzzlePos = {
-            basePos_.x + aimDirection_.x * len,
+            basePos_.x + aimDirection_.x * len + 35.0f,
             basePos_.y + aimDirection_.y * len
         };
 
