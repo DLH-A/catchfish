@@ -155,23 +155,23 @@ private:
 
         // 3. 设置血量和分数
         if (selectedConfig.name == "SmallFish") {
-            newFish->hp_ = 1;
+            newFish->hp_ = 2;
             newFish->score = 10;
         }
         else if (selectedConfig.name == "FastFish") {
-            newFish->hp_ = 1;
+            newFish->hp_ = 3;
             newFish->score = 15;
         }
         else if (selectedConfig.name == "MediumFish") {
-            newFish->hp_ = 3;
+            newFish->hp_ = 10;
             newFish->score = 30;
         }
         else if (selectedConfig.name == "LargeFish") {
-            newFish->hp_ = 5;
+            newFish->hp_ = 15;
             newFish->score = 50;
         }
         else if (selectedConfig.name == "RareFish") {
-            newFish->hp_ = 10;
+            newFish->hp_ = 20;
             newFish->score = 100;
         }
 

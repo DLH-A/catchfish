@@ -24,6 +24,23 @@ public:
     int GetAmmoLevel() const {
         return currentAmmoLevel;
     }
+    // 【新增】处理升级降级的核心函数
+    void HandleUpgrade(bool isUp) {
+        int cost = 0;
+        if (isUp) {
+            if (currentAmmoLevel >= 7) return; // 最高7级
+            currentAmmoLevel++;
+        }
+        else {
+            if (currentAmmoLevel <= 1) return; // 最低1级
+            currentAmmoLevel--;
+        }
+
+        // 根据等级重新加载贴图
+        std::string cannonPath = "assets/images/cannon" + std::to_string(currentAmmoLevel) + ".png";
+        cannonLoaded_ = false;
+        LoadTextureSafe(cannonPath, cannonTexture_, cannonLoaded_);
+    }
     TurretComponent() : currentAngle_(-PI / 2.0f) {
         aimDirection_ = { 0.0f, -1.0f };
         baseTexture_ = { 0 };
@@ -48,12 +65,7 @@ public:
 
     void update(float dt) override {
         if (!isActive) return;
-        // 按 U 键升级炮弹等级（最多3级）
-        if (IsKeyPressed(KEY_U)) {
-            if (currentAmmoLevel < 3) {
-                currentAmmoLevel++;
-            }
-        }
+
         Vector2 mousePos = GetMousePosition();
         Vector2 toMouse = { mousePos.x - basePos_.x, mousePos.y - basePos_.y };
 
@@ -93,7 +105,7 @@ public:
             // 【关键修改】：绘制位置也要对应调整
             // 我们要让 origin 点（旋转中心）对齐 basePos_
             // 所以 dest.y = basePos_.y - origin.y
-            float offsetX = 65.0f;  // <--- 调整这个值！
+            float offsetX = 72.5f;  // <--- 调整这个值！
 
             Rectangle dest = {
                 basePos_.x - origin.x + offsetX,  // 加上偏移量
@@ -129,9 +141,7 @@ private:
 
     void FireBullet() {
         // 【新增】按等级计算消耗
-        int cost = 1;
-        if (currentAmmoLevel == 2) cost = 5;
-        else if (currentAmmoLevel == 3) cost = 10;
+            int cost = currentAmmoLevel ; // 1级2分，2级4分...7级14分
 
         // 分数不够，禁止发射
         if (game->score < cost) return;
